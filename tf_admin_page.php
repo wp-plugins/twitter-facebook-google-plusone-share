@@ -39,7 +39,8 @@ $active_buttons = array(
 		
 		$option['bkcolor_value'] = esc_html($_POST['twitter_facebook_share_bkcolor_value']);
 		$option['jsload'] = (isset($_POST['twitter_facebook_share_javascript_load']) and $_POST['twitter_facebook_share_javascript_load']=='on') ? true : false;
-		
+
+		$option['twitter_id'] = esc_html($_POST['twitter_facebook_share_twitter_id']);		
 		$option['left_space'] = esc_html($_POST['twitter_facebook_share_left_space']);
 		$option['bottom_space'] = esc_html($_POST['twitter_facebook_share_bottom_space']);
 		$option['float_position'] = esc_html($_POST['twitter_facebook_share_float_position']);
@@ -134,6 +135,11 @@ $active_buttons = array(
 		<input type="checkbox" name="twitter_facebook_share_javascript_load" '.$jsload.' />
 		<span class="description">'.__("(Recommended, else loaded in header)", 'menu-test' ).'</span>
 	</td></tr>
+	<tr><td style="padding-bottom:20px;" valign="top">'.__("Your Twitter ID", 'menu-test' ).':</td>
+	<td style="padding-bottom:20px;">
+	<input type="text" name="twitter_facebook_share_twitter_id" value="'.$option['twitter_id'].'" size="30">  
+		 <span class="description">'.__("Specify your twitter id without @", 'menu-test' ).'</span>
+	</td></tr> 
 	
 	<tr><td valign="top" colspan="2"><h3>'.__("Left Side Floating Specific Options", 'menu-test' ).'</h3></td></tr>
 	

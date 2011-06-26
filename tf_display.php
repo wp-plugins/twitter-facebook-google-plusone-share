@@ -120,15 +120,22 @@ margin:4px 4px 4px 4px;
 		if ($option['active_buttons']['facebook_like']==true) {
 		$output .= '
 			<div class="buttons">
-			<fb:like href="' . urlencode(get_permalink($post->ID)) . '"  layout="box_count" width="450" show_faces="false" font=""></fb:like>
+			<fb:like href="' . urlencode(get_permalink($post->ID)) . '"  layout="box_count" width="55px" show_faces="false" font=""></fb:like>
 			</div>';
 		}
 		
 		if ($option['active_buttons']['twitter']==true) {
+		if ($option['twitter_id'] != ''){
 		$output .= '
 			<div class="buttons">
-			<a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="searchtechword">Tweet</a>
+			<a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="'. $option['twitter_id'] . '">Tweet</a>
 			</div>';
+		} else {
+		$output .= '
+			<div class="buttons">
+			<a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical">Tweet</a>
+			</div>';
+		}
 		}
 		
 		if ($option['active_buttons']['Google_plusone']==true) {
@@ -170,11 +177,17 @@ margin:4px 4px 4px 4px;
 		}
 		
 		if ($option['active_buttons']['twitter']==true) {
-		$output .= '			
+		if ($option['twitter_id'] != ''){
+		$output .= '
 			<div class="buttons">
-			<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="searchtechword">Tweet</a>
-			<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+			<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="'. $option['twitter_id'] . '">Tweet</a>
 			</div>';
+		} else {
+		$output .= '
+			<div class="buttons">
+			<a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical">Tweet</a>
+			</div>';
+		}
 		}
 		$output .= '			
 			</div><div style="clear:both"></div><div style="padding-bottom:4px;"></div>';
