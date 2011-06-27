@@ -71,6 +71,7 @@ $active_buttons = array(
 	
 	$out .= '
 	<div class="wrap">
+	<div style="float:left; width:70%;">
 	<h2>'.__( 'Facebook and Twitter share buttons', 'menu-test' ).'</h2>
 	<form name="form1" method="post" action="">
 
@@ -172,6 +173,26 @@ $active_buttons = array(
 	</table>
 
 	</form>
+	</div>
+	<div style="float:left; margin-top:100px; width:30%;">
+	<table>
+	<tr><td  align="justify" width="80px">
+	<h4>Support the Author</h4>
+	<p >If you liked the plugin and was useful to your site then please support to keep this project up and running. Maintenance and enhancement do cost. Show your appreciation and love.</p> </td></tr>
+	<tr>
+	<td align="centre">
+	<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+	<input type="hidden" name="cmd" value="_s-xclick">
+	<input type="hidden" name="hosted_button_id" value="86FHBFVUYN45J">
+	<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online.">
+	<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+	</form>
+	</td>
+	</tr>
+	</table>
+	</div>
+
+	<div style="clear:both;"></div>
 	</div>
 	';
 	echo $out; 
