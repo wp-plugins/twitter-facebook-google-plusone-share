@@ -4,7 +4,7 @@ Plugin Site: http://www.searchtechword.com
 Tags: Facebook like, twitter button, twitter share, Google +1 (plus one) button, Google plus one, Stumbleupon, social share, twitter facebook share, google +1 share
 Requires at least: 2.8+
 Tested up to: 3.1.3
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 
 == Description ==
 <br />
@@ -45,6 +45,10 @@ You can Check Screen Shots on my website. I use the same plugin to display Socia
 [Twitter Facebook Google Plusone Social Share](http://www.searchtechword.com/2011/06/wordpress-plugin-add-twitter-facebook-google-plus-one-share)<br />
 
 == Change log ==
+
+== 1.0.2 ==
+*Fixed a small bug for left side floating facebook like.
+*Eliminated the use of javascript for facebook like as it was conflicting with other facebook plugins.
 
 == 1.0.1 ==
 * Add the option in settings to enter your twitter id. This will be used in "via @yourtweetid" in the tweet text.
