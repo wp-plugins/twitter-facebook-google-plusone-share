@@ -13,9 +13,6 @@ function twitter_facebook_share_init() {
 	//GET ARRAY OF STORED VALUES
 	$option = twitter_facebook_share_get_options_stored();
 
-	if ($option['active_buttons']['facebook_like']==true) {
-		wp_enqueue_script('twitter_facebook_share_facebook', 'http://connect.facebook.net/en_US/all.js#xfbml=1','','',$option['jsload']);
-	}
 	if ($option['active_buttons']['twitter']==true) {
 		wp_enqueue_script('twitter_facebook_share_twitter', 'http://platform.twitter.com/widgets.js','','',$option['jsload']);
 	}
@@ -120,15 +117,23 @@ margin:4px 4px 4px 4px;
 		if ($option['active_buttons']['facebook_like']==true) {
 		$output .= '
 			<div class="buttons">
-			<fb:like href="' . urlencode(get_permalink($post->ID)) . '"  layout="box_count" width="450" show_faces="false" font=""></fb:like>
+			<iframe src="http://www.facebook.com/plugins/like.php?href=' . rawurlencode(get_permalink()) . '&layout=box_count&show_faces=false&action=like&font=verdana
+&colorscheme=light" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:50px; height:60px;" allowTransparency="true"></iframe>
 			</div>';
 		}
 		
 		if ($option['active_buttons']['twitter']==true) {
+		if ($option['twitter_id'] != ''){
 		$output .= '
 			<div class="buttons">
-			<a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="searchtechword">Tweet</a>
+			<a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="'. $option['twitter_id'] . '">Tweet</a>
 			</div>';
+		} else {
+		$output .= '
+			<div class="buttons">
+			<a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical">Tweet</a>
+			</div>';
+		}
 		}
 		
 		if ($option['active_buttons']['Google_plusone']==true) {
@@ -159,7 +164,6 @@ margin:4px 4px 4px 4px;
 		if ($option['active_buttons']['Google_plusone']==true) {
 		$output .= '
 			<div class="buttons">
-			<script type="text/javascript" src="http://apis.google.com/js/plusone.js"></script>
 			<g:plusone size="medium"></g:plusone>
 			</div>';
 		}
@@ -170,19 +174,22 @@ margin:4px 4px 4px 4px;
 		}
 		
 		if ($option['active_buttons']['twitter']==true) {
-		$output .= '			
+		if ($option['twitter_id'] != ''){
+		$output .= '
 			<div class="buttons">
-			<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="searchtechword">Tweet</a>
-			<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+			<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="'. $option['twitter_id'] . '">Tweet</a>
 			</div>';
+		} else {
+		$output .= '
+			<div class="buttons">
+			<a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical">Tweet</a>
+			</div>';
+		}
 		}
 		$output .= '			
 			</div><div style="clear:both"></div><div style="padding-bottom:4px;"></div>';
 			
 		return $output;
-			
 	}
-
-			
 }
 ?>
