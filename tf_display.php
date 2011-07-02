@@ -29,8 +29,19 @@ function kc_twitter_facebook_contents($content)
 {
   global $single;
   $output = kc_social_share();
-  if (is_single()) {
-  		$option = twitter_facebook_share_get_options_stored();
+  $option = twitter_facebook_share_get_options_stored();
+  if (is_single() && ($option['show_in']['posts'])) {
+  		if ($option['position'] == 'above')
+        	return  $output . $content;
+		if ($option['position'] == 'below')
+			return  $content . $output;
+		if ($option['position'] == 'left')
+			return  $output . $content;
+		if ($option['position'] == 'both')
+			return  $output . $content . $output;
+    } 
+	if (is_home() && ($option['show_in']['home_page'])){
+		$option = twitter_facebook_share_get_options_stored();
 		if ($option['position'] == 'above')
         	return  $output . $content;
 		if ($option['position'] == 'below')
@@ -39,9 +50,68 @@ function kc_twitter_facebook_contents($content)
 			return  $output . $content;
 		if ($option['position'] == 'both')
 			return  $output . $content . $output;
-    } else {
-        return $content;
-    }
+	}
+	if (is_singular() && ($option['show_in']['pages'])) {
+  		if ($option['position'] == 'above')
+        	return  $output . $content;
+		if ($option['position'] == 'below')
+			return  $content . $output;
+		if ($option['position'] == 'left')
+			return  $output . $content;
+		if ($option['position'] == 'both')
+			return  $output . $content . $output;
+    }  
+	if (is_category() && ($option['show_in']['categories'])) {
+  		if ($option['position'] == 'above')
+        	return  $output . $content;
+		if ($option['position'] == 'below')
+			return  $content . $output;
+		if ($option['position'] == 'left')
+			return  $output . $content;
+		if ($option['position'] == 'both')
+			return  $output . $content . $output;
+    } 
+	if (is_tag() && ($option['show_in']['tags'])) {
+  		if ($option['position'] == 'above')
+        	return  $output . $content;
+		if ($option['position'] == 'below')
+			return  $content . $output;
+		if ($option['position'] == 'left')
+			return  $output . $content;
+		if ($option['position'] == 'both')
+			return  $output . $content . $output;
+    } 
+	if (is_author() && ($option['show_in']['authors'])) {
+  		if ($option['position'] == 'above')
+        	return  $output . $content;
+		if ($option['position'] == 'below')
+			return  $content . $output;
+		if ($option['position'] == 'left')
+			return  $output . $content;
+		if ($option['position'] == 'both')
+			return  $output . $content . $output;
+    } 
+	if (is_search() && ($option['show_in']['search'])) {
+  		if ($option['position'] == 'above')
+        	return  $output . $content;
+		if ($option['position'] == 'below')
+			return  $content . $output;
+		if ($option['position'] == 'left')
+			return  $output . $content;
+		if ($option['position'] == 'both')
+			return  $output . $content . $output;
+    } 
+	if (is_date() && ($option['show_in']['date_arch'])) {
+  		if ($option['position'] == 'above')
+        	return  $output . $content;
+		if ($option['position'] == 'below')
+			return  $content . $output;
+		if ($option['position'] == 'left')
+			return  $output . $content;
+		if ($option['position'] == 'both')
+			return  $output . $content . $output;
+    } 
+	return $content;
 }
 
 // Function to manually display related posts.
@@ -111,14 +181,16 @@ margin:4px 4px 4px 4px;
 
 </style>
 <?php
- 	
+ 	$post_link = esc_url(get_permalink());
+	$post_title = get_the_title();
+	if ($option['position'] == 'left' && ( !is_single() || !is_singular()))
+		$option['position'] = 'above';
 	if ($option['position'] == 'left'){
 		$output = '<div id="leftcontainerBox">';
 		if ($option['active_buttons']['facebook_like']==true) {
 		$output .= '
 			<div class="buttons">
-			<iframe src="http://www.facebook.com/plugins/like.php?href=' . rawurlencode(get_permalink()) . '&layout=box_count&show_faces=false&action=like&font=verdana
-&colorscheme=light" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:50px; height:60px;" allowTransparency="true"></iframe>
+			<iframe src="http://www.facebook.com/plugins/like.php?href=' . rawurlencode(get_permalink()) . '&amp;layout=box_count&amp;show_faces=false&amp;action=like&amp;font=verdana&amp;colorscheme=light" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:50px; height:60px;" allowTransparency="true"></iframe>
 			</div>';
 		}
 		
@@ -126,12 +198,12 @@ margin:4px 4px 4px 4px;
 		if ($option['twitter_id'] != ''){
 		$output .= '
 			<div class="buttons">
-			<a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="'. $option['twitter_id'] . '">Tweet</a>
+			<a href="http://twitter.com/share" class="twitter-share-button" data-url="'. $post_link .'"  data-text="'. $post_title . '" data-count="vertical" data-via="'. $option['twitter_id'] . '">Tweet</a>
 			</div>';
 		} else {
 		$output .= '
 			<div class="buttons">
-			<a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical">Tweet</a>
+			<a href="http://twitter.com/share" class="twitter-share-button" data-url="'. $post_link .'"  data-text="'. $post_title . '" data-count="vertical">Tweet</a>
 			</div>';
 		}
 		}
@@ -139,13 +211,13 @@ margin:4px 4px 4px 4px;
 		if ($option['active_buttons']['Google_plusone']==true) {
 		$output .= '
 			<div class="buttons">
-			<g:plusone size="tall"></g:plusone>
+			<g:plusone size="tall" href="'. $post_link .'"></g:plusone>
 			</div>';
 		}
 		
 		if ($option['active_buttons']['stumbleupon']==true) {
 		$output .= '
-			<div class="buttons"><script src="http://www.stumbleupon.com/hostedbadge.php?s=5"></script></div>';
+			<div class="buttons"><script src="http://www.stumbleupon.com/hostedbadge.php?s=5&amp;r='.$post_link.'"></script></div>';
 		}
 		$output .= '</div><div style="clear:both"></div>';
 		return $output;
@@ -157,32 +229,32 @@ margin:4px 4px 4px 4px;
 		$output = '<div id="bottomcontainerBox">';
 		if ($option['active_buttons']['facebook_like']==true) {
 		$output .= '
-			<div class="buttons"><iframe src="http://www.facebook.com/plugins/like.php?href=' . rawurlencode(get_permalink()) . '&layout=button_count&show_faces=false&width=100&action=like&font=verdana
-&colorscheme=light&height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe></div>';
+			<div class="buttons">
+			<iframe src="http://www.facebook.com/plugins/like.php?href=' . rawurlencode(get_permalink()) . '&amp;layout=button_count&amp;show_faces=false&amp;width=100&amp;action=like&amp;font=verdana&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe></div>';
 		}
 
 		if ($option['active_buttons']['Google_plusone']==true) {
 		$output .= '
 			<div class="buttons">
-			<g:plusone size="medium"></g:plusone>
+			<g:plusone size="medium" href="' . $post_link . '"></g:plusone>
 			</div>';
 		}
 		
 		if ($option['active_buttons']['stumbleupon']==true) {
 		$output .= '			
-			<div class="buttons"><script src="http://www.stumbleupon.com/hostedbadge.php?s=1"></script></div>';
+			<div class="buttons"><script src="http://www.stumbleupon.com/hostedbadge.php?s=1&amp;r='.$post_link.'"></script></div>';
 		}
 		
 		if ($option['active_buttons']['twitter']==true) {
 		if ($option['twitter_id'] != ''){
 		$output .= '
 			<div class="buttons">
-			<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="'. $option['twitter_id'] . '">Tweet</a>
+			<a href="http://twitter.com/share" class="twitter-share-button" data-url="'. $post_link .'"  data-text="'. $post_title . '" data-count="horizontal" data-via="'. $option['twitter_id'] . '">Tweet</a>
 			</div>';
 		} else {
 		$output .= '
 			<div class="buttons">
-			<a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical">Tweet</a>
+			<a href="http://twitter.com/share" class="twitter-share-button" data-url="'. $post_link .'"  data-text="'. $post_title . '" data-count="horizontal">Tweet</a>
 			</div>';
 		}
 		}
