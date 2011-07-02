@@ -183,7 +183,7 @@ margin:4px 4px 4px 4px;
 <?php
  	$post_link = esc_url(get_permalink());
 	$post_title = get_the_title();
-	if ($option['position'] == 'left' && ( !is_single() || !is_singular()))
+	if ($option['position'] == 'left' && ( !is_single() && !is_singular()))
 		$option['position'] = 'above';
 	if ($option['position'] == 'left'){
 		$output = '<div id="leftcontainerBox">';

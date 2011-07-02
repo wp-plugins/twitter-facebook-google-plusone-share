@@ -115,6 +115,7 @@ $show_in = array(
 
 	}
 	
+	
 	$out .= '</td></tr>
 			<tr><td valign="top" style="width:130px;">'.__("Show buttons in these pages", 'menu-test' ).':</td>
 			<td style="padding-bottom:20px;">';
@@ -126,8 +127,11 @@ $show_in = array(
 						. __($text, 'menu-test' ).' &nbsp;&nbsp;</div>';
 			}
 
-	$out .= '</td></tr>
-	
+	$out .= '</td></tr>';
+	$out .= '<tr><td style="padding-bottom:20px;" valign="top">'.__("Note", 'menu-test' ).':</td>
+	<td style="padding-bottom:20px;">
+	<span class="description">'.__("Left Floating is available only for single post and Static pages. By Default the bar will be displayed above the post.", 'menu-test' ).'</span>';
+	$out .= '</td></tr>	
 	<tr><td style="padding-bottom:20px;" valign="top">'.__("Position", 'menu-test' ).':</td>
 	<td style="padding-bottom:20px;"><select name="twitter_facebook_share_position">
 		<option value="above" '.$sel_above.' > '.__('Above the post', 'menu-test' ).'</option>
