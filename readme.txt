@@ -4,7 +4,7 @@ Plugin Site: http://www.searchtechword.com
 Tags: Facebook like, twitter button, twitter share, Google +1 (plus one) button, Google plus one, Stumbleupon, social share, twitter facebook share, google +1 share
 Requires at least: 2.8+
 Tested up to: 3.1.3
-Stable tag: 1.0.2
+Stable tag: 1.1.1
 
 == Description ==
 <br />
@@ -22,6 +22,8 @@ This plugin is the most efficient way to integrate the important social share bu
 Option to load the script in header as well, if you wish to.
 
 * Left side floating option is the latest trend these days. The top and left spacing can be configured according to your site layout. Using simple CSS and not ajax for better performance. Also floating bar can be fixed on that position or absolute and can be configured easily through settings.
+
+* Option to display on home page, static pages, category, tag, archive pages. 
 
 * Option to manually display the share box at any position.
 
@@ -44,15 +46,30 @@ I will try and help as much as possible and answer all your queries. I am ready 
 You can Check Screen Shots on my website. I use the same plugin to display Social Share :<br />
 [Twitter Facebook Google Plusone Social Share](http://www.searchtechword.com/2011/06/wordpress-plugin-add-twitter-facebook-google-plus-one-share)<br />
 
-== Change log ==
+== Changelog ==
 
-== 1.0.2 ==
-*Fixed a small bug for left side floating facebook like.
-*Eliminated the use of javascript for facebook like as it was conflicting with other facebook plugins.
+= 1.1.1=
+* Fixed a small bug related to single page display.
+* Added notice in settings page regarding floating left option.
 
-== 1.0.1 ==
+= 1.1.0 =
+* Added new feature to display Social share buttons on home page, static pages, category, archives, tags.
+
+= 1.0.2 =
+* Fixed a small bug for left side floating facebook like.
+* Eliminated the use of javascript for facebook like as it was conflicting with other facebook plugins.
+
+= 1.0.1 =
 * Add the option in settings to enter your twitter id. This will be used in "via @yourtweetid" in the tweet text.
 * Fixed a small CSS bug for facebook like (left floating).
 
-== 1.0.0 ==
-*Initial version
+= 1.0.0 =
+* Initial version
+
+== Upgrade Notice ==
+
+= 1.1.1 =
+1 New feature and 3 bug fixes 
+
+= 1.1.0 =
+* New feature to display on home and static page added.

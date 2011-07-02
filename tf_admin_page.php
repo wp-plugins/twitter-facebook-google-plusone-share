@@ -21,6 +21,17 @@ $active_buttons = array(
 		'stumbleupon'=>'Stumbleupon',
 		'Google_plusone'=>'Google PlusOne'
 	);	
+
+$show_in = array(
+		'posts'=>'Single posts',
+		'pages'=>'Pages',
+		'home_page'=>'Home page',
+		'tags'=>'Tags',
+		'categories'=>'Categories',
+		'authors'=>'Author archives',
+		'search'=>'Search results',
+		'date_arch'=>'Archives'
+	);
 	
 	$out = '';
 	
@@ -32,6 +43,9 @@ $active_buttons = array(
 		foreach (array_keys($active_buttons) as $item) {
 			$option['active_buttons'][$item] = (isset($_POST['twitter_facebook_share_active_'.$item]) and $_POST['twitter_facebook_share_active_'.$item]=='on') ? true : false;
 		}	
+		foreach (array_keys($show_in) as $item) {
+			$option['show_in'][$item] = (isset($_POST['twitter_facebook_share_show_'.$item]) and $_POST['twitter_facebook_share_show_'.$item]=='on') ? true : false;
+		}
 		$option['position'] = esc_html($_POST['twitter_facebook_share_position']);
 		$option['border'] = esc_html($_POST['twitter_facebook_share_border']);
 		
@@ -91,7 +105,7 @@ $active_buttons = array(
 	</td></tr>
 
 	<tr><td valign="top" style="width:130px;">'.__("Active share buttons", 'menu-test' ).':</td>
-	<td style="padding-bottom:40px;">';
+	<td style="padding-bottom:30px;">';
 	
 	foreach ($active_buttons as $name => $text) {
 		$checked = ($option['active_buttons'][$name]) ? 'checked="checked"' : '';
@@ -100,9 +114,24 @@ $active_buttons = array(
 				. __($text, 'menu-test' ).' &nbsp;&nbsp;</div>';
 
 	}
-
-	$out .= '</td></tr>
 	
+	
+	$out .= '</td></tr>
+			<tr><td valign="top" style="width:130px;">'.__("Show buttons in these pages", 'menu-test' ).':</td>
+			<td style="padding-bottom:20px;">';
+
+			foreach ($show_in as $name => $text) {
+				$checked = ($option['show_in'][$name]) ? 'checked="checked"' : '';
+				$out .= '<div style="width:150px; float:left;">
+						<input type="checkbox" name="twitter_facebook_share_show_'.$name.'" '.$checked.' /> '
+						. __($text, 'menu-test' ).' &nbsp;&nbsp;</div>';
+			}
+
+	$out .= '</td></tr>';
+	$out .= '<tr><td style="padding-bottom:20px;" valign="top">'.__("Note", 'menu-test' ).':</td>
+	<td style="padding-bottom:20px;">
+	<span class="description">'.__("Left Floating is available only for single post and Static pages. By Default the bar will be displayed above the post.", 'menu-test' ).'</span>';
+	$out .= '</td></tr>	
 	<tr><td style="padding-bottom:20px;" valign="top">'.__("Position", 'menu-test' ).':</td>
 	<td style="padding-bottom:20px;"><select name="twitter_facebook_share_position">
 		<option value="above" '.$sel_above.' > '.__('Above the post', 'menu-test' ).'</option>
@@ -247,6 +276,7 @@ function twitter_facebook_share_get_options_default ($position='above', $border=
 	$option = array();
 	$option['auto'] = true;
 	$option['active_buttons'] = array('facebook_like'=>true, 'twitter'=>true, 'stumbleupon'=>true, 'Google_plusone'=>true);
+	$option['show_in'] = array('posts'=>true, 'pages'=>true, 'home_page'=>true, 'tags'=>true, 'categories'=>true,  'authors'=>true, 'search'=>true,'date_arch'=>true);
 	$option['position'] = $position;
 	$option['border'] = $border;
 	$option['bkcolor'] = true;
