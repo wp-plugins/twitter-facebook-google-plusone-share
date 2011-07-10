@@ -3,8 +3,8 @@ Contributors: beingmaverick
 Plugin Site: http://www.searchtechword.com
 Tags: Facebook like, twitter button, twitter share, Google +1 (plus one) button, Google plus one, Stumbleupon, social share, twitter facebook share, google +1 share
 Requires at least: 2.8+
-Tested up to: 3.1.3
-Stable tag: 1.1.1
+Tested up to: 3.2
+Stable tag: 2.0.0
 
 == Description ==
 <br />
@@ -25,6 +25,14 @@ Option to load the script in header as well, if you wish to.
 
 * Option to display on home page, static pages, category, tag, archive pages. 
 
+* Shortcode [tfg_social_share] which can be inserted in test for any post or pages to display the socail share bar.
+
+* Add a custom field "disable_social_share" with value "yes" to disable social share for specific pages or posts.
+
+* Facebook Like thumbnail will now display thumbnail specific to the post or page.
+
+* Adjust width of individual social share button configure count display.
+
 * Option to manually display the share box at any position.
 
 
@@ -39,7 +47,8 @@ Very easy to install, similar to rest of the plugins.
 
 == Frequently Asked Questions ==
 
-If you have any doubts or question or want to customise the plugin then get in touch with me at [SearchTechWord Wordpress Plugin](http://www.searchtechword.com/about-searchtechword/)<br />
+If you have any doubts or question or want to customise the plugin then get in touch with me at 
+[SearchTechWord Wordpress Plugin](http://www.searchtechword.com/about-searchtechword/)<br />
 I will try and help as much as possible and answer all your queries. I am ready to add to more features if you demand for the same, all free of cost. Always there to help you.
 
 == Screenshots ==
@@ -48,7 +57,15 @@ You can Check Screen Shots on my website. I use the same plugin to display Socia
 
 == Changelog ==
 
-= 1.1.1=
+= 2.0.0 =
+* Added shortcode [tfg_social_share]
+* Option to disable social share for individual post and pages.
+* Thumbnail search functionality for facebook like.
+* Adjust width of individual social share button.
+* Configure count display for Google +1 and Twitter.
+* CSS included in separate file.
+
+= 1.1.1 =
 * Fixed a small bug related to single page display.
 * Added notice in settings page regarding floating left option.
 
@@ -67,6 +84,10 @@ You can Check Screen Shots on my website. I use the same plugin to display Socia
 * Initial version
 
 == Upgrade Notice ==
+
+= 2.0.0 =
+
+3 new features and few bug fixes.
 
 = 1.1.1 =
 1 New feature and 3 bug fixes 
