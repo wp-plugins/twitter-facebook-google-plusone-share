@@ -3,8 +3,8 @@ Contributors: beingmaverick
 Plugin Site: http://www.searchtechword.com
 Tags: Facebook like, twitter button, twitter share, Google +1 (plus one) button, Google plus one, Stumbleupon, social share, twitter facebook share, google +1 share
 Requires at least: 2.8+
-Tested up to: 3.1.3
-Stable tag: 1.0.2
+Tested up to: 3.2
+Stable tag: 2.0.0
 
 == Description ==
 <br />
@@ -23,6 +23,16 @@ Option to load the script in header as well, if you wish to.
 
 * Left side floating option is the latest trend these days. The top and left spacing can be configured according to your site layout. Using simple CSS and not ajax for better performance. Also floating bar can be fixed on that position or absolute and can be configured easily through settings.
 
+* Option to display on home page, static pages, category, tag, archive pages. 
+
+* Shortcode [tfg_social_share] which can be inserted in test for any post or pages to display the socail share bar.
+
+* Add a custom field "disable_social_share" with value "yes" to disable social share for specific pages or posts.
+
+* Facebook Like thumbnail will now display thumbnail specific to the post or page.
+
+* Adjust width of individual social share button configure count display.
+
 * Option to manually display the share box at any position.
 
 
@@ -37,22 +47,50 @@ Very easy to install, similar to rest of the plugins.
 
 == Frequently Asked Questions ==
 
-If you have any doubts or question or want to customise the plugin then get in touch with me at [SearchTechWord Wordpress Plugin](http://www.searchtechword.com/about-searchtechword/)<br />
+If you have any doubts or question or want to customise the plugin then get in touch with me at 
+[SearchTechWord Wordpress Plugin](http://www.searchtechword.com/about-searchtechword/)<br />
 I will try and help as much as possible and answer all your queries. I am ready to add to more features if you demand for the same, all free of cost. Always there to help you.
 
 == Screenshots ==
 You can Check Screen Shots on my website. I use the same plugin to display Social Share :<br />
 [Twitter Facebook Google Plusone Social Share](http://www.searchtechword.com/2011/06/wordpress-plugin-add-twitter-facebook-google-plus-one-share)<br />
 
-== Change log ==
+== Changelog ==
 
-== 1.0.2 ==
-*Fixed a small bug for left side floating facebook like.
-*Eliminated the use of javascript for facebook like as it was conflicting with other facebook plugins.
+= 2.0.0 =
+* Added shortcode [tfg_social_share]
+* Option to disable social share for individual post and pages.
+* Thumbnail search functionality for facebook like.
+* Adjust width of individual social share button.
+* Configure count display for Google +1 and Twitter.
+* CSS included in separate file.
 
-== 1.0.1 ==
+= 1.1.1 =
+* Fixed a small bug related to single page display.
+* Added notice in settings page regarding floating left option.
+
+= 1.1.0 =
+* Added new feature to display Social share buttons on home page, static pages, category, archives, tags.
+
+= 1.0.2 =
+* Fixed a small bug for left side floating facebook like.
+* Eliminated the use of javascript for facebook like as it was conflicting with other facebook plugins.
+
+= 1.0.1 =
 * Add the option in settings to enter your twitter id. This will be used in "via @yourtweetid" in the tweet text.
 * Fixed a small CSS bug for facebook like (left floating).
 
-== 1.0.0 ==
-*Initial version
+= 1.0.0 =
+* Initial version
+
+== Upgrade Notice ==
+
+= 2.0.0 =
+
+3 new features and few bug fixes.
+
+= 1.1.1 =
+1 New feature and 3 bug fixes 
+
+= 1.1.0 =
+* New feature to display on home and static page added.

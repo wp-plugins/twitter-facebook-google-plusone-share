@@ -21,6 +21,17 @@ $active_buttons = array(
 		'stumbleupon'=>'Stumbleupon',
 		'Google_plusone'=>'Google PlusOne'
 	);	
+
+$show_in = array(
+		'posts'=>'Single posts',
+		'pages'=>'Pages',
+		'home_page'=>'Home page',
+		'tags'=>'Tags',
+		'categories'=>'Categories',
+		'authors'=>'Author archives',
+		'search'=>'Search results',
+		'date_arch'=>'Archives'
+	);
 	
 	$out = '';
 	
@@ -32,6 +43,9 @@ $active_buttons = array(
 		foreach (array_keys($active_buttons) as $item) {
 			$option['active_buttons'][$item] = (isset($_POST['twitter_facebook_share_active_'.$item]) and $_POST['twitter_facebook_share_active_'.$item]=='on') ? true : false;
 		}	
+		foreach (array_keys($show_in) as $item) {
+			$option['show_in'][$item] = (isset($_POST['twitter_facebook_share_show_'.$item]) and $_POST['twitter_facebook_share_show_'.$item]=='on') ? true : false;
+		}
 		$option['position'] = esc_html($_POST['twitter_facebook_share_position']);
 		$option['border'] = esc_html($_POST['twitter_facebook_share_border']);
 		
@@ -44,7 +58,11 @@ $active_buttons = array(
 		$option['left_space'] = esc_html($_POST['twitter_facebook_share_left_space']);
 		$option['bottom_space'] = esc_html($_POST['twitter_facebook_share_bottom_space']);
 		$option['float_position'] = esc_html($_POST['twitter_facebook_share_float_position']);
-		
+		$option['twitter_count'] = (isset($_POST['twitter_facebook_share_twitter_count']) and $_POST['twitter_facebook_share_twitter_count']=='on') ? true : false;
+		$option['google_count'] = (isset($_POST['twitter_facebook_share_google_count']) and $_POST['twitter_facebook_share_google_count']=='on') ? true : false;
+		$option['google_width'] = esc_html($_POST['twitter_facebook_share_google_width']);
+		$option['facebook_like_width'] = esc_html($_POST['twitter_facebook_share_facebook_like_width']);
+		$option['twitter_width'] = esc_html($_POST['twitter_facebook_share_twitter_width']);
 		update_option($option_name, $option);
 		// Put a settings updated message on the screen
 		$out .= '<div class="updated"><p><strong>'.__('Settings saved.', 'menu-test' ).'</strong></p></div>';
@@ -68,17 +86,20 @@ $active_buttons = array(
 	$bkcolor = ($option['bkcolor']) ? 'checked="checked"' : '';
 	$jsload =  ($option['jsload']) ? 'checked="checked"' : '';
 	$auto =    ($option['auto']) ? 'checked="checked"' : '';
+	$google_count = ($option['google_count']) ? 'checked="checked"' : '';
+	$twitter_count = ($option['twitter_count']) ? 'checked="checked"' : '';
 	
 	$out .= '
 	<div class="wrap">
-	<div style="float:left; width:70%;">
+
 	<h2>'.__( 'Facebook and Twitter share buttons', 'menu-test' ).'</h2>
+	<div id="poststuff" style="padding-top:10px; position:relative;">
+		<div style="float:left; width:74%; padding-right:1%;">
 	<form name="form1" method="post" action="">
-
+	<div class="postbox">
+	<h3>'.__("General options", 'menu-test' ).'</h3>
+	<div class="inside">
 	<table>
-
-	<tr><td valign="top" colspan="2"><h3>'.__("General Settings", 'menu-test' ).'</h3></td></tr>
-
 	<tr><td style="padding-bottom:20px;" valign="top">'.__("Auto Display", 'menu-test' ).':</td>
 	<td style="padding-bottom:20px;">
 		<input type="checkbox" name="twitter_facebook_share_auto_display" '.$auto.' />
@@ -91,7 +112,7 @@ $active_buttons = array(
 	</td></tr>
 
 	<tr><td valign="top" style="width:130px;">'.__("Active share buttons", 'menu-test' ).':</td>
-	<td style="padding-bottom:40px;">';
+	<td style="padding-bottom:30px;">';
 	
 	foreach ($active_buttons as $name => $text) {
 		$checked = ($option['active_buttons'][$name]) ? 'checked="checked"' : '';
@@ -100,9 +121,24 @@ $active_buttons = array(
 				. __($text, 'menu-test' ).' &nbsp;&nbsp;</div>';
 
 	}
-
-	$out .= '</td></tr>
 	
+	
+	$out .= '</td></tr>
+			<tr><td valign="top" style="width:130px;">'.__("Show buttons in these pages", 'menu-test' ).':</td>
+			<td style="padding-bottom:20px;">';
+
+			foreach ($show_in as $name => $text) {
+				$checked = ($option['show_in'][$name]) ? 'checked="checked"' : '';
+				$out .= '<div style="width:150px; float:left;">
+						<input type="checkbox" name="twitter_facebook_share_show_'.$name.'" '.$checked.' /> '
+						. __($text, 'menu-test' ).' &nbsp;&nbsp;</div>';
+			}
+
+	$out .= '</td></tr>';
+	$out .= '<tr><td style="padding-bottom:20px;" valign="top">'.__("Note", 'menu-test' ).':</td>
+	<td style="padding-bottom:20px;">
+	<span class="description">'.__("Left Floating is available only for single post and Static pages. By Default the bar will be displayed above the post.", 'menu-test' ).'</span>';
+	$out .= '</td></tr>	
 	<tr><td style="padding-bottom:20px;" valign="top">'.__("Position", 'menu-test' ).':</td>
 	<td style="padding-bottom:20px;"><select name="twitter_facebook_share_position">
 		<option value="above" '.$sel_above.' > '.__('Above the post', 'menu-test' ).'</option>
@@ -141,9 +177,15 @@ $active_buttons = array(
 	<input type="text" name="twitter_facebook_share_twitter_id" value="'.$option['twitter_id'].'" size="30">  
 		 <span class="description">'.__("Specify your twitter id without @", 'menu-test' ).'</span>
 	</td></tr> 
+	</table>
+	</div>
+	</div>
 	
-	<tr><td valign="top" colspan="2"><h3>'.__("Left Side Floating Specific Options", 'menu-test' ).'</h3></td></tr>
-	
+	<div class="postbox">
+	<h3>'.__("Left Side Floating Specific Options", 'menu-test' ).'</h3>
+	<div class="inside">
+	<table>
+		
 	<tr><td style="padding-bottom:20px;" valign="top">'.__("Left Side Spacing", 'menu-test' ).':</td>
 	<td style="padding-bottom:20px;">
 	<input type="text" name="twitter_facebook_share_left_space" value="'.$option['left_space'].'" size="10">  
@@ -162,25 +204,55 @@ $active_buttons = array(
 		<option value="absolute" '.$sel_absolute.' > '.__('Absolute Position', 'menu-test' ).'</option>
 		</select>
 	</td></tr>
+	</table>
+	</div>
+	</div>
+	
+	<div class="postbox">
+	<h3>'.__("Adjust Width and Count Display", 'menu-test' ).'</h3>
+	<div class="inside">
+		<table>
+		<tr><td style="padding-bottom:20px; padding-right:10px;" valign="top">'.__("Facebook Button width", 'menu-test' ).':</td>
+			<td style="padding-bottom:20px;">
+				<input type="text" name="twitter_facebook_share_facebook_like_width" value="'.stripslashes($option['facebook_like_width']).'" size="10">px<br />
+			</td>
+			<td style="padding-bottom:20px; padding-left:50px; padding-right:10px;" valign="top">'.__("Google +1 Button width", 'menu-test' ).':</td>
+			<td style="padding-bottom:20px;">
+				<input type="text" name="twitter_facebook_share_google_width" value="'.stripslashes($option['google_width']).'" size="10">px<br />
+			</td></tr>
+		<tr><td style="padding-bottom:20px; padding-right:10px;" valign="top">'.__("Twitter Button width", 'menu-test' ).':</td>
+			<td style="padding-bottom:20px;">
+				<input type="text" name="twitter_facebook_share_twitter_width" value="'.stripslashes($option['twitter_width']).'" size="10"> px <br />
+			</td></tr>
+		<tr><td style="padding-bottom:20px; padding-right:10px;" valign="top">'.__("Google +1 counter", 'menu-test' ).':</td>
+			<td style="padding-bottom:20px;">
+				<input type="checkbox" name="twitter_facebook_share_google_count" '.$google_count.' />
+			</td></tr>
+		<tr><td style="padding-bottom:20px; padding-right:10px;" valign="top">'.__("Twitter counter", 'menu-test' ).':</td>
+			<td style="padding-bottom:20px;">
+				<input type="checkbox" name="twitter_facebook_share_twitter_count" '.$twitter_count.' />
+			</td></tr>
+		</table>
+	</div>
+	</div>
 	
 	<tr><td valign="top" colspan="2">
 	<p class="submit">
 		<input type="submit" name="Submit" class="button-primary" value="'.esc_attr('Save Changes').'" />
 	</p>
 	</td></tr>
-
-		
-	</table>
-
 	</form>
 	</div>
-	<div style="float:left; margin-top:100px; width:30%;">
+	
+	<div style="float:right; width:25%;">
+	<div class="postbox">
+	<h3>'.__("Support The Author", 'menu-test' ).'</h3>
+	<div class="inside">
 	<table>
-	<tr><td  align="justify" width="80px">
-	<h4>Support the Author</h4>
+	<tr><td  align="justify">
 	<p >If you liked the plugin and was useful to your site then please support to keep this project up and running. Maintenance and enhancement do cost. Show your appreciation and love.</p> </td></tr>
 	<tr>
-	<td align="centre">
+	<td align="center">
 	<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 	<input type="hidden" name="cmd" value="_s-xclick">
 	<input type="hidden" name="hosted_button_id" value="86FHBFVUYN45J">
@@ -191,8 +263,21 @@ $active_buttons = array(
 	</tr>
 	</table>
 	</div>
+	</div>
+	<div class="postbox">
+	<h3>'.__("Additional Info", 'menu-test' ).'</h3>
+	<div class="inside">
+	<table>
+	<tr><td  align="justify">
+	<ul>
+	<li>Shortcode <strong>[tfg_social_share]</strong> to add the social share bar to specific pages.</li> 
+	<li>Custom field "<strong>disable_social_share</strong>" with value "yes" to exclude specific post or pages.</li>
+	</td></tr>
+	</tr>
+	</table>
+	</div>
+	</div>
 
-	<div style="clear:both;"></div>
 	</div>
 	';
 	echo $out; 
@@ -240,6 +325,21 @@ function twitter_facebook_share_get_options_stored () {
 		$option['jsload'] = true;
 	}
 	
+	if (!isset($option['facebook_like_width'])) {
+		$option['facebook_like_width'] = '85';
+	}
+	if (!isset($option['twitter_width'])) {
+		$option['twitter_width'] = '85';
+	}
+	if (!isset($option['google_width'])) {
+		$option['google_width'] = '85';
+	}
+	if (!isset($option['twitter_count'])) {
+		$option['twitter_count'] = true;
+	}
+	if (!isset($option['google_count'])) {
+		$option['google_count'] = true;
+	}	
 	return $option;
 }
 
@@ -247,6 +347,7 @@ function twitter_facebook_share_get_options_default ($position='above', $border=
 	$option = array();
 	$option['auto'] = true;
 	$option['active_buttons'] = array('facebook_like'=>true, 'twitter'=>true, 'stumbleupon'=>true, 'Google_plusone'=>true);
+	$option['show_in'] = array('posts'=>true, 'pages'=>true, 'home_page'=>true, 'tags'=>true, 'categories'=>true,  'authors'=>true, 'search'=>true,'date_arch'=>true);
 	$option['position'] = $position;
 	$option['border'] = $border;
 	$option['bkcolor'] = true;
@@ -255,6 +356,11 @@ function twitter_facebook_share_get_options_default ($position='above', $border=
 	$option['left_space'] = $left_space;
 	$option['bottom_space'] = $bottom_space;
 	$option['float_position'] = $float_position;
+	$option['facebook_like_width'] = '85';
+	$option['twitter_width'] = '85';
+	$option['google_width'] = '85';
+	$option['google_count'] = true;
+	$option['twitter_count'] = true;
 	return $option;
 }
 ?>
