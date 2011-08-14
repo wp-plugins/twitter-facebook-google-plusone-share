@@ -19,7 +19,8 @@ $active_buttons = array(
 		'facebook_like'=>'Facebook like',
 		'twitter'=>'Twitter',
 		'stumbleupon'=>'Stumbleupon',
-		'Google_plusone'=>'Google PlusOne'
+		'Google_plusone'=>'Google PlusOne',
+		'linkedin'=>'LinkedIn'
 	);	
 
 $show_in = array(
@@ -60,9 +61,12 @@ $show_in = array(
 		$option['float_position'] = esc_html($_POST['twitter_facebook_share_float_position']);
 		$option['twitter_count'] = (isset($_POST['twitter_facebook_share_twitter_count']) and $_POST['twitter_facebook_share_twitter_count']=='on') ? true : false;
 		$option['google_count'] = (isset($_POST['twitter_facebook_share_google_count']) and $_POST['twitter_facebook_share_google_count']=='on') ? true : false;
+		$option['linkedin_count'] = (isset($_POST['twitter_facebook_share_linkedin_count']) and $_POST['twitter_facebook_share_linkedin_count']=='on') ? true : false;
 		$option['google_width'] = esc_html($_POST['twitter_facebook_share_google_width']);
 		$option['facebook_like_width'] = esc_html($_POST['twitter_facebook_share_facebook_like_width']);
 		$option['twitter_width'] = esc_html($_POST['twitter_facebook_share_twitter_width']);
+		$option['linkedin_width'] = esc_html($_POST['twitter_facebook_share_linkedin_width']);
+		$option['stumbleupon_width'] = esc_html($_POST['twitter_facebook_share_stumbleupon_width']);
 		update_option($option_name, $option);
 		// Put a settings updated message on the screen
 		$out .= '<div class="updated"><p><strong>'.__('Settings saved.', 'menu-test' ).'</strong></p></div>';
@@ -88,6 +92,7 @@ $show_in = array(
 	$auto =    ($option['auto']) ? 'checked="checked"' : '';
 	$google_count = ($option['google_count']) ? 'checked="checked"' : '';
 	$twitter_count = ($option['twitter_count']) ? 'checked="checked"' : '';
+	$linkedin_count = ($option['linkedin_count']) ? 'checked="checked"' : '';
 	
 	$out .= '
 	<div class="wrap">
@@ -214,20 +219,35 @@ $show_in = array(
 		<table>
 		<tr><td style="padding-bottom:20px; padding-right:10px;" valign="top">'.__("Facebook Button width", 'menu-test' ).':</td>
 			<td style="padding-bottom:20px;">
-				<input type="text" name="twitter_facebook_share_facebook_like_width" value="'.stripslashes($option['facebook_like_width']).'" size="10">px<br />
+				<input type="text" name="twitter_facebook_share_facebook_like_width" value="'.stripslashes($option['facebook_like_width']).'" size="5">px<br />
 			</td>
 			<td style="padding-bottom:20px; padding-left:50px; padding-right:10px;" valign="top">'.__("Google +1 Button width", 'menu-test' ).':</td>
 			<td style="padding-bottom:20px;">
-				<input type="text" name="twitter_facebook_share_google_width" value="'.stripslashes($option['google_width']).'" size="10">px<br />
-			</td></tr>
+				<input type="text" name="twitter_facebook_share_google_width" value="'.stripslashes($option['google_width']).'" size="5">px<br />
+			</td>
+			<td style="padding-bottom:20px; padding-right:10px;" valign="top">'.__("Stumbleupon Button width", 'menu-test' ).':</td>
+			<td style="padding-bottom:20px;">
+				<input type="text" name="twitter_facebook_share_stumbleupon_width" value="'.stripslashes($option['stumbleupon_width']).'" size="10"> px <br />
+			</td>	
+		</tr>
 		<tr><td style="padding-bottom:20px; padding-right:10px;" valign="top">'.__("Twitter Button width", 'menu-test' ).':</td>
 			<td style="padding-bottom:20px;">
-				<input type="text" name="twitter_facebook_share_twitter_width" value="'.stripslashes($option['twitter_width']).'" size="10"> px <br />
-			</td></tr>
+				<input type="text" name="twitter_facebook_share_twitter_width" value="'.stripslashes($option['twitter_width']).'" size="5"> px <br />
+			</td>
+			<td style="padding-bottom:20px; padding-left:50px; padding-right:10px;" valign="top">'.__("Linkedin Button width", 'menu-test' ).':</td>
+			<td style="padding-bottom:20px;">
+				<input type="text" name="twitter_facebook_share_linkedin_width" value="'.stripslashes($option['linkedin_width']).'" size="5"> px <br />
+			</td>	
+		</tr>
 		<tr><td style="padding-bottom:20px; padding-right:10px;" valign="top">'.__("Google +1 counter", 'menu-test' ).':</td>
 			<td style="padding-bottom:20px;">
 				<input type="checkbox" name="twitter_facebook_share_google_count" '.$google_count.' />
-			</td></tr>
+			</td>
+			<td style="padding-bottom:20px; padding-right:10px;" valign="top">'.__("LinkedIn counter", 'menu-test' ).':</td>
+			<td style="padding-bottom:20px;">
+				<input type="checkbox" name="twitter_facebook_share_linkedin_count" '.$linkedin_count.' />
+			</td>	
+		</tr>
 		<tr><td style="padding-bottom:20px; padding-right:10px;" valign="top">'.__("Twitter counter", 'menu-test' ).':</td>
 			<td style="padding-bottom:20px;">
 				<input type="checkbox" name="twitter_facebook_share_twitter_count" '.$twitter_count.' />
@@ -329,13 +349,22 @@ function twitter_facebook_share_get_options_stored () {
 		$option['facebook_like_width'] = '85';
 	}
 	if (!isset($option['twitter_width'])) {
-		$option['twitter_width'] = '85';
+		$option['twitter_width'] = '95';
 	}
 	if (!isset($option['google_width'])) {
-		$option['google_width'] = '85';
+		$option['google_width'] = '80';
+	}
+	if (!isset($option['linkedin_width'])) {
+		$option['linkedin_width'] = '105';
+	}
+	if (!isset($option['stumbleupon_width'])) {
+		$option['stumbleupon_width'] = '85';
 	}
 	if (!isset($option['twitter_count'])) {
 		$option['twitter_count'] = true;
+	}
+	if (!isset($option['linkedin_count'])) {
+		$option['linkedin_count'] = true;
 	}
 	if (!isset($option['google_count'])) {
 		$option['google_count'] = true;
@@ -346,7 +375,7 @@ function twitter_facebook_share_get_options_stored () {
 function twitter_facebook_share_get_options_default ($position='above', $border='flat', $color='#F0F4F9',$left_space='60px',$bottom_space='40%', $float_position='fixed') {
 	$option = array();
 	$option['auto'] = true;
-	$option['active_buttons'] = array('facebook_like'=>true, 'twitter'=>true, 'stumbleupon'=>true, 'Google_plusone'=>true);
+	$option['active_buttons'] = array('facebook_like'=>true, 'twitter'=>true, 'stumbleupon'=>true, 'Google_plusone'=>true, 'linkedin'=>true);
 	$option['show_in'] = array('posts'=>true, 'pages'=>true, 'home_page'=>true, 'tags'=>true, 'categories'=>true,  'authors'=>true, 'search'=>true,'date_arch'=>true);
 	$option['position'] = $position;
 	$option['border'] = $border;
@@ -357,10 +386,13 @@ function twitter_facebook_share_get_options_default ($position='above', $border=
 	$option['bottom_space'] = $bottom_space;
 	$option['float_position'] = $float_position;
 	$option['facebook_like_width'] = '85';
-	$option['twitter_width'] = '85';
-	$option['google_width'] = '85';
+	$option['twitter_width'] = '95';
+	$option['linkedin_width'] = '105';
+	$option['stumbleupon_width'] = '85';
+	$option['google_width'] = '80';
 	$option['google_count'] = true;
 	$option['twitter_count'] = true;
+	$option['linkedin_count'] = true;
 	return $option;
 }
 ?>

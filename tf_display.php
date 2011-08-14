@@ -20,6 +20,9 @@ function twitter_facebook_share_init() {
 	if ($option['active_buttons']['Google_plusone']==true) {
 		wp_enqueue_script('twitter_facebook_share_google', 'http://apis.google.com/js/plusone.js','','',$option['jsload']);
 	}
+	if ($option['active_buttons']['linkedin']==true) {
+		wp_enqueue_script('twitter_facebook_share_linkedin', 'http://platform.linkedin.com/in.js','','',$option['jsload']);
+	}
 
 	wp_enqueue_style('tfg_style', '/wp-content/plugins/twitter-facebook-google-plusone-share/tfg_style.css');
 	
@@ -198,6 +201,9 @@ function kc_social_share($source)
 		$output .= '
 			<div class="buttons"><script src="http://www.stumbleupon.com/hostedbadge.php?s=5&amp;r='.$post_link.'"></script></div>';
 		}
+		if ($option['active_buttons']['linkedin']==true) {
+		$output .= '<div class="buttons" style="padding-left:0px;"><script type="in/share" data-url="' . $post_link . '" data-counter="top"></script></div>';
+		}
 		$output .= '</div><div style="clear:both"></div>';
 		return $output;
 	}
@@ -205,7 +211,7 @@ function kc_social_share($source)
 		
 	if (($option['position'] == 'below') || ($option['position'] == 'above') || ($option['position'] == 'both'))
 	{
-		$output = '<div id="bottomcontainerBox" style="' .$border. $bkcolor. '">';
+		$output = '<div class="bottomcontainerBox" style="' .$border. $bkcolor. '">';
 		if ($option['active_buttons']['facebook_like']==true) {
 		$output .= '
 			<div style="float:left; width:' .$option['facebook_like_width']. 'px;padding-right:10px; margin:4px 4px 4px 4px;height:30px;">
@@ -218,11 +224,6 @@ function kc_social_share($source)
 			<div style="float:left; width:' .$option['google_width']. 'px;padding-right:10px; margin:4px 4px 4px 4px;height:30px;">
 			<g:plusone size="medium" href="' . $post_link . '"'.$data_count.'></g:plusone>
 			</div>';
-		}
-		
-		if ($option['active_buttons']['stumbleupon']==true) {
-		$output .= '			
-			<div style="float:left; width:85px; padding-right:10px; margin:4px 4px 4px 4px;height:30px;"><script src="http://www.stumbleupon.com/hostedbadge.php?s=1&amp;r='.$post_link.'"></script></div>';
 		}
 		
 		if ($option['active_buttons']['twitter']==true) {
@@ -239,6 +240,15 @@ function kc_social_share($source)
 			</div>';
 		}
 		}
+		if ($option['active_buttons']['linkedin']==true) {
+		$counter = ($option['linkedin_count']) ? 'right' : '';
+		$output .= '<div style="float:left; width:' .$option['linkedin_width']. 'px;padding-right:10px; margin:4px 4px 4px 4px;height:30px;"><script type="in/share" data-url="' . $post_link . '" data-counter="' .$counter. '"></script></div>';
+		}
+		if ($option['active_buttons']['stumbleupon']==true) {
+		$output .= '			
+			<div style="float:left; width:' .$option['stumbleupon_width']. 'px;padding-right:10px; margin:4px 4px 4px 4px;height:30px;"><script src="http://www.stumbleupon.com/hostedbadge.php?s=1&amp;r='.$post_link.'"></script></div>';
+		}
+		
 		$output .= '			
 			</div><div style="clear:both"></div><div style="padding-bottom:4px;"></div>';
 			
