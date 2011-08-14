@@ -1,10 +1,10 @@
 === Add Twitter, Facebook Like, Google plus one Social share ===
 Contributors: beingmaverick
 Plugin Site: http://www.searchtechword.com
-Tags: Facebook like, twitter button, twitter share, Google +1 (plus one) button, Google plus one, Stumbleupon, social share, twitter facebook share, google +1 share
+Tags: Facebook like, twitter button, twitter share,LinkedIn, Google +1 (plus one) button, Google plus one, Stumbleupon, social share, twitter facebook share, google +1 share
 Requires at least: 2.8+
 Tested up to: 3.2
-Stable tag: 2.0.0
+Stable tag: 2.1.0
 
 == Description ==
 <br />
@@ -12,7 +12,7 @@ Stable tag: 2.0.0
 [Plugin Home Page](http://www.searchtechword.com/2011/06/wordpress-plugin-add-twitter-facebook-google-plus-one-share)
 <br />
 <br />
-This plugin is the most efficient way to integrate the important social share buttons like twitter, facebook like, google +1 (plus one) and stumbleupon in three different position and styles.
+This plugin is the most efficient way to integrate the important social share buttons like twitter, facebook like, google +1 (plus one), LinkedIn and stumbleupon in three different position and styles.
 
 * Automatically display the social share buttons Above the post, below the post, both above and below or floating left side of post.
 
@@ -57,6 +57,9 @@ You can Check Screen Shots on my website. I use the same plugin to display Socia
 
 == Changelog ==
 
+= 2.1.0 =
+* Added LinkedIn Share button
+
 = 2.0.0 =
 * Added shortcode [tfg_social_share]
 * Option to disable social share for individual post and pages.
@@ -84,6 +87,10 @@ You can Check Screen Shots on my website. I use the same plugin to display Socia
 * Initial version
 
 == Upgrade Notice ==
+
+= 2.1.0 =
+
+Added LinkedIn Share button
 
 = 2.0.0 =
 
