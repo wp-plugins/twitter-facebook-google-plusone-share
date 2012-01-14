@@ -12,6 +12,8 @@ function twitter_facebook_share_init() {
 
 	//GET ARRAY OF STORED VALUES
 	$option = twitter_facebook_share_get_options_stored();
+	if ($option['mobdev']==true){
+	if (!is_mobile_device()){
 
 	if ($option['active_buttons']['twitter']==true) {
 		wp_enqueue_script('twitter_facebook_share_twitter', 'http://platform.twitter.com/widgets.js','','',$option['jsload']);
@@ -25,6 +27,7 @@ function twitter_facebook_share_init() {
 	}
 
 	wp_enqueue_style('tfg_style', '/wp-content/plugins/twitter-facebook-google-plusone-share/tfg_style.css');
+	}}
 	
 }    
 
@@ -44,6 +47,8 @@ function kc_twitter_facebook($content, $filter)
   
   $option = twitter_facebook_share_get_options_stored();
   $custom_disable = get_post_custom_values('disable_social_share');
+  if ($option['mobdev']==true){
+  if (!is_mobile_device()) {
   if (is_single() && ($option['show_in']['posts']) && ($custom_disable[0] != 'yes')) {
 	    $output = kc_social_share('auto');
   		if ($option['position'] == 'above')
@@ -131,15 +136,20 @@ function kc_twitter_facebook($content, $filter)
 			return  $output . $content;
 		if ($option['position'] == 'both')
 			return  $output . $content . $output;
-    } 
+    }
+	}} 
 	return $content;
 }
 
 // Function to manually display related posts.
 function kc_add_social_share()
 {
+ $option = twitter_facebook_share_get_options_stored();
+ if ($option['mobdev']==true){
+ if (!is_mobile_device()) {
  $output = kc_social_share('manual');
  echo $output;
+ }}
 }
 
 
@@ -257,8 +267,13 @@ function kc_social_share($source)
 }
 
 function tfg_social_share_shortcode () {
+	$option = twitter_facebook_share_get_options_stored();
+	if ($option['mobdev']==true){
+	if (!is_mobile_device())
+	{
 	$output = kc_social_share('shortcode');
 	echo $output;
+	}}
 }
 
 function fb_like_thumbnails()
@@ -273,5 +288,28 @@ echo "\n\n<!-- Thumbnail for facebook like -->\n<link rel=\"image_src\" href=\"$
 }
 else
 $thumb = $default;
+}
+
+function is_mobile_device()
+{
+if (strpos( $_SERVER['HTTP_USER_AGENT'] , 'iPhone') ) 
+		return true;
+if (strpos( $_SERVER['HTTP_USER_AGENT'] , 'iPad') )
+		return true;
+if (strpos( $_SERVER['HTTP_USER_AGENT'] , 'iPod') )
+		return true;
+if (strpos( $_SERVER['HTTP_USER_AGENT'] , 'Nokia') )
+		return true;
+if (strpos( $_SERVER['HTTP_USER_AGENT'] , 'Opera Mini') )
+		return true;
+if (strpos( $_SERVER['HTTP_USER_AGENT'] , 'Opera Mobi') )
+		return true;
+if (strpos( $_SERVER['HTTP_USER_AGENT'] , 'SonyEricsson') )
+		return true;
+if (strpos( $_SERVER['HTTP_USER_AGENT'] , 'BlackBerry') )
+		return true;
+if (strpos( $_SERVER['HTTP_USER_AGENT'] , 'Mobile Safari') )
+		return true;
+return false;
 }
 ?>
