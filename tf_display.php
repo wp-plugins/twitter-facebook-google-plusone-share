@@ -12,8 +12,11 @@ function twitter_facebook_share_init() {
 
 	//GET ARRAY OF STORED VALUES
 	$option = twitter_facebook_share_get_options_stored();
-	if ($option['mobdev']==true){
-	if (!is_mobile_device()){
+	
+	if (is_mobile_device() && ($option['mobdev']==true)){
+	// disable for mobile device
+		return;
+	} 
 
 	if ($option['active_buttons']['twitter']==true) {
 		wp_enqueue_script('twitter_facebook_share_twitter', 'http://platform.twitter.com/widgets.js','','',$option['jsload']);
@@ -27,7 +30,7 @@ function twitter_facebook_share_init() {
 	}
 
 	wp_enqueue_style('tfg_style', '/wp-content/plugins/twitter-facebook-google-plusone-share/tfg_style.css');
-	}}
+	
 	
 }    
 
@@ -47,8 +50,11 @@ function kc_twitter_facebook($content, $filter)
   
   $option = twitter_facebook_share_get_options_stored();
   $custom_disable = get_post_custom_values('disable_social_share');
-  if ($option['mobdev']==true){
-  if (!is_mobile_device()) {
+  
+  if (is_mobile_device() && ($option['mobdev']==true)){
+	// disable for mobile device
+		return $content;
+	} 
   if (is_single() && ($option['show_in']['posts']) && ($custom_disable[0] != 'yes')) {
 	    $output = kc_social_share('auto');
   		if ($option['position'] == 'above')
@@ -137,7 +143,7 @@ function kc_twitter_facebook($content, $filter)
 		if ($option['position'] == 'both')
 			return  $output . $content . $output;
     }
-	}} 
+	
 	return $content;
 }
 
@@ -145,11 +151,13 @@ function kc_twitter_facebook($content, $filter)
 function kc_add_social_share()
 {
  $option = twitter_facebook_share_get_options_stored();
- if ($option['mobdev']==true){
- if (!is_mobile_device()) {
+ 
+ if ((is_mobile_device()) && ($option['mobdev']==true)){
+	// disable for mobile device
+		return;
+	} 
  $output = kc_social_share('manual');
  echo $output;
- }}
 }
 
 
@@ -268,12 +276,13 @@ function kc_social_share($source)
 
 function tfg_social_share_shortcode () {
 	$option = twitter_facebook_share_get_options_stored();
-	if ($option['mobdev']==true){
-	if (!is_mobile_device())
-	{
+	
+	if (is_mobile_device() && ($option['mobdev']==true)){
+	// disable for mobile device
+		return;
+	} 
 	$output = kc_social_share('shortcode');
 	echo $output;
-	}}
 }
 
 function fb_like_thumbnails()
