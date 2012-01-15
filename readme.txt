@@ -4,7 +4,7 @@ Plugin Site: http://www.searchtechword.com
 Tags: Facebook like, twitter button, twitter share,LinkedIn, Google +1 button, Google plus one, Stumbleupon, social share, twitter facebook share,stumbleupon, LinkedIn share, floating sharebar, facebook, +1 
 Requires at least: 2.8
 Tested up to: 3.3.1
-Stable tag: 2.2.0
+Stable tag: 2.2.1
 
 == Description ==
 <br />
@@ -59,6 +59,9 @@ You can Check Screen Shots on my website. I use the same plugin to display Socia
 
 == Changelog ==
 
+= 2.2.1 =
+* Fixed a minor bug for disable mobile device display.
+
 = 2.2.0 =
 * Added option to disable on Mobile device
 
@@ -92,6 +95,10 @@ You can Check Screen Shots on my website. I use the same plugin to display Socia
 * Initial version
 
 == Upgrade Notice ==
+
+= 2.2.1 =
+
+Minor bug fixed for disable mobile device display.
 
 = 2.2.0 =
 
