@@ -1,9 +1,9 @@
 === Add Twitter, Facebook Like, Google plus one Social share ===
 Contributors: beingmaverick
 Plugin Site: http://www.searchtechword.com
-Tags: Facebook like, twitter button, twitter share,LinkedIn, Google +1 (plus one) button, Google plus one, Stumbleupon, social share, twitter facebook share, google +1 share
-Requires at least: 2.8+
-Tested up to: 3.3
+Tags: Facebook like, twitter button, twitter share,LinkedIn, Google +1 button, Google plus one, Stumbleupon, social share, twitter facebook share,stumbleupon, LinkedIn share, floating sharebar, facebook, +1 
+Requires at least: 2.8
+Tested up to: 3.3.1
 Stable tag: 2.2.0
 
 == Description ==
