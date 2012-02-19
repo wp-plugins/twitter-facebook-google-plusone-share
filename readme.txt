@@ -1,10 +1,10 @@
 === Add Twitter, Facebook Like, Google plus one Social share ===
 Contributors: beingmaverick
 Plugin Site: http://www.searchtechword.com
-Tags: Facebook like, twitter button, twitter share,LinkedIn, Google +1 (plus one) button, Google plus one, Stumbleupon, social share, twitter facebook share, google +1 share
-Requires at least: 2.8+
-Tested up to: 3.3
-Stable tag: 2.2.0
+Tags: Facebook like, twitter button, twitter share,LinkedIn, Google +1 button, Google plus one, Stumbleupon, social share, twitter facebook share,stumbleupon, LinkedIn share, floating sharebar, facebook, +1, pinterest button, pinterest share 
+Requires at least: 2.8
+Tested up to: 3.3.1
+Stable tag: 2.3.0
 
 == Description ==
 <br />
@@ -12,7 +12,7 @@ Stable tag: 2.2.0
 [Plugin Home Page](http://www.searchtechword.com/2011/06/wordpress-plugin-add-twitter-facebook-google-plus-one-share)
 <br />
 <br />
-This plugin is the most efficient way to integrate the important social share buttons like twitter, facebook like, google +1 (plus one), LinkedIn and stumbleupon in three different position and styles.
+This plugin is the most efficient way to integrate the important social share buttons like twitter, facebook like, google +1 (plus one), LinkedIn, stumbleupon and Pinterest in three different position and styles.
 
 * Automatically display the social share buttons Above the post, below the post, both above and below or floating left side of post.
 
@@ -37,6 +37,8 @@ Option to load the script in header as well, if you wish to.
 
 * Option to disable on Mobile Devices (iPad, iPhone, Blackberry, Nokia, Android, Opera Mini)
 
+* Advanced image search for Pinterest sharing. (searches post thumbnail, then attached image to post and lastly any image inserted in the post content (picks up first image found).
+
 
 == Installation ==
 
@@ -49,6 +51,9 @@ Very easy to install, similar to rest of the plugins.
 
 == Frequently Asked Questions ==
 
+[FAQs for the plugin]
+(http://www.searchtechword.com/2012/01/faq-for-wordpress-plugin-twitter-facebook-google-plus-one-social-share/)<br />
+
 If you have any doubts or question or want to customise the plugin then get in touch with me at 
 [SearchTechWord Wordpress Plugin](http://www.searchtechword.com/about-searchtechword/)<br />
 I will try and help as much as possible and answer all your queries. I am ready to add to more features if you demand for the same, all free of cost. Always there to help you.
@@ -58,6 +63,14 @@ You can Check Screen Shots on my website. I use the same plugin to display Socia
 [Twitter Facebook Google Plusone Social Share](http://www.searchtechword.com/2011/06/wordpress-plugin-add-twitter-facebook-google-plus-one-share)<br />
 
 == Changelog ==
+
+= 2.3.0 =
+* Added Pinterest share option.
+* Fix for the "Tweet" text in the excerpt.
+* couple of W3C validator fixes.
+
+= 2.2.1 =
+* Fixed a minor bug for disable mobile device display.
 
 = 2.2.0 =
 * Added option to disable on Mobile device
@@ -92,6 +105,14 @@ You can Check Screen Shots on my website. I use the same plugin to display Socia
 * Initial version
 
 == Upgrade Notice ==
+
+= 2.3.0 =
+
+Pinterest share option added | "Tweet" word in excerpt fix | W3c Validator fixes
+
+= 2.2.1 =
+
+Minor bug fixed for disable mobile device display.
 
 = 2.2.0 =
 
