@@ -20,7 +20,8 @@ $active_buttons = array(
 		'twitter'=>'Twitter',
 		'stumbleupon'=>'Stumbleupon',
 		'Google_plusone'=>'Google PlusOne',
-		'linkedin'=>'LinkedIn'
+		'linkedin'=>'LinkedIn',
+		'pinterest'=>'Pinterest'
 	);	
 
 $show_in = array(
@@ -63,10 +64,12 @@ $show_in = array(
 		$option['twitter_count'] = (isset($_POST['twitter_facebook_share_twitter_count']) and $_POST['twitter_facebook_share_twitter_count']=='on') ? true : false;
 		$option['google_count'] = (isset($_POST['twitter_facebook_share_google_count']) and $_POST['twitter_facebook_share_google_count']=='on') ? true : false;
 		$option['linkedin_count'] = (isset($_POST['twitter_facebook_share_linkedin_count']) and $_POST['twitter_facebook_share_linkedin_count']=='on') ? true : false;
+		$option['pinterest_count'] = (isset($_POST['twitter_facebook_share_pinterest_count']) and $_POST['twitter_facebook_share_pinterest_count']=='on') ? true : false;
 		$option['google_width'] = esc_html($_POST['twitter_facebook_share_google_width']);
 		$option['facebook_like_width'] = esc_html($_POST['twitter_facebook_share_facebook_like_width']);
 		$option['twitter_width'] = esc_html($_POST['twitter_facebook_share_twitter_width']);
 		$option['linkedin_width'] = esc_html($_POST['twitter_facebook_share_linkedin_width']);
+		$option['pinterest_width'] = esc_html($_POST['twitter_facebook_share_pinterest_width']);
 		$option['stumbleupon_width'] = esc_html($_POST['twitter_facebook_share_stumbleupon_width']);
 		update_option($option_name, $option);
 		// Put a settings updated message on the screen
@@ -95,6 +98,7 @@ $show_in = array(
 	$google_count = ($option['google_count']) ? 'checked="checked"' : '';
 	$twitter_count = ($option['twitter_count']) ? 'checked="checked"' : '';
 	$linkedin_count = ($option['linkedin_count']) ? 'checked="checked"' : '';
+	$pinterest_count = ($option['pinterest_count']) ? 'checked="checked"' : '';
 	
 	$out .= '
 	<div class="wrap">
@@ -232,9 +236,9 @@ $show_in = array(
 			<td style="padding-bottom:20px;">
 				<input type="text" name="twitter_facebook_share_google_width" value="'.stripslashes($option['google_width']).'" size="5">px<br />
 			</td>
-			<td style="padding-bottom:20px; padding-right:10px;" valign="top">'.__("Stumbleupon Button width", 'menu-test' ).':</td>
+			<td style="padding-bottom:20px; padding-left:5px; padding-right:10px;" valign="top">'.__("Stumbleupon Button width", 'menu-test' ).':</td>
 			<td style="padding-bottom:20px;">
-				<input type="text" name="twitter_facebook_share_stumbleupon_width" value="'.stripslashes($option['stumbleupon_width']).'" size="10"> px <br />
+				<input type="text" name="twitter_facebook_share_stumbleupon_width" value="'.stripslashes($option['stumbleupon_width']).'" size="5"> px <br />
 			</td>	
 		</tr>
 		<tr><td style="padding-bottom:20px; padding-right:10px;" valign="top">'.__("Twitter Button width", 'menu-test' ).':</td>
@@ -245,20 +249,29 @@ $show_in = array(
 			<td style="padding-bottom:20px;">
 				<input type="text" name="twitter_facebook_share_linkedin_width" value="'.stripslashes($option['linkedin_width']).'" size="5"> px <br />
 			</td>	
+			<td style="padding-bottom:20px; padding-left:5px; padding-right:10px;" valign="top">'.__("Pinterest Button width", 'menu-test' ).':</td>
+			<td style="padding-bottom:20px;">
+				<input type="text" name="twitter_facebook_share_pinterest_width" value="'.stripslashes($option['pinterest_width']).'" size="5"> px <br />
+			</td>	
 		</tr>
 		<tr><td style="padding-bottom:20px; padding-right:10px;" valign="top">'.__("Google +1 counter", 'menu-test' ).':</td>
 			<td style="padding-bottom:20px;">
 				<input type="checkbox" name="twitter_facebook_share_google_count" '.$google_count.' />
+			</td>
+			<td style="padding-bottom:20px; padding-right:10px;" valign="top">'.__("Pinterest counter", 'menu-test' ).':</td>
+			<td style="padding-bottom:20px;">
+				<input type="checkbox" name="twitter_facebook_share_pinterest_count" '.$pinterest_count.' />
+			</td>	
+		</tr>
+		<tr><td style="padding-bottom:20px; padding-right:10px;" valign="top">'.__("Twitter counter", 'menu-test' ).':</td>
+			<td style="padding-bottom:20px;">
+				<input type="checkbox" name="twitter_facebook_share_twitter_count" '.$twitter_count.' />
 			</td>
 			<td style="padding-bottom:20px; padding-right:10px;" valign="top">'.__("LinkedIn counter", 'menu-test' ).':</td>
 			<td style="padding-bottom:20px;">
 				<input type="checkbox" name="twitter_facebook_share_linkedin_count" '.$linkedin_count.' />
 			</td>	
 		</tr>
-		<tr><td style="padding-bottom:20px; padding-right:10px;" valign="top">'.__("Twitter counter", 'menu-test' ).':</td>
-			<td style="padding-bottom:20px;">
-				<input type="checkbox" name="twitter_facebook_share_twitter_count" '.$twitter_count.' />
-			</td></tr>
 		</table>
 	</div>
 	</div>
@@ -277,7 +290,7 @@ $show_in = array(
 	<div class="inside">
 	<table>
 	<tr><td  align="justify">
-	<p >If you liked the plugin and was useful to your site then please support to keep this project up and running. Maintenance and enhancement do cost. Show your appreciation and love.</p> </td></tr>
+	<p >If you liked the plugin and was useful to your site then please consider donating. All donations go to a <strong>Child Education Charity</strong>. Show your appreciation and love.</p> </td></tr>
 	<tr>
 	<td align="center">
 	<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
@@ -367,6 +380,9 @@ function twitter_facebook_share_get_options_stored () {
 	if (!isset($option['linkedin_width'])) {
 		$option['linkedin_width'] = '105';
 	}
+	if (!isset($option['pinterest_width'])) {
+		$option['pinterest_width'] = '105';
+	}
 	if (!isset($option['stumbleupon_width'])) {
 		$option['stumbleupon_width'] = '85';
 	}
@@ -375,6 +391,9 @@ function twitter_facebook_share_get_options_stored () {
 	}
 	if (!isset($option['linkedin_count'])) {
 		$option['linkedin_count'] = true;
+	}
+	if (!isset($option['pinterest_count'])) {
+		$option['pinterest_count'] = true;
 	}
 	if (!isset($option['google_count'])) {
 		$option['google_count'] = true;
@@ -385,8 +404,8 @@ function twitter_facebook_share_get_options_stored () {
 function twitter_facebook_share_get_options_default ($position='above', $border='flat', $color='#F0F4F9',$left_space='60px',$bottom_space='40%', $float_position='fixed') {
 	$option = array();
 	$option['auto'] = true;
-	$option['active_buttons'] = array('facebook_like'=>true, 'twitter'=>true, 'stumbleupon'=>true, 'Google_plusone'=>true, 'linkedin'=>true);
-	$option['show_in'] = array('posts'=>true, 'pages'=>true, 'home_page'=>true, 'tags'=>true, 'categories'=>true,  'authors'=>true, 'search'=>true,'date_arch'=>true);
+	$option['active_buttons'] = array('facebook_like'=>true, 'twitter'=>true, 'stumbleupon'=>true, 'Google_plusone'=>true, 'linkedin'=>true,'pinterest'=>false);
+	$option['show_in'] = array('posts'=>true, 'pages'=>true, 'home_page'=>false, 'tags'=>true, 'categories'=>true,  'authors'=>true, 'search'=>true,'date_arch'=>true);
 	$option['position'] = $position;
 	$option['border'] = $border;
 	$option['bkcolor'] = true;
@@ -399,11 +418,13 @@ function twitter_facebook_share_get_options_default ($position='above', $border=
 	$option['facebook_like_width'] = '85';
 	$option['twitter_width'] = '95';
 	$option['linkedin_width'] = '105';
+	$option['pinterest_width'] = '105';
 	$option['stumbleupon_width'] = '85';
 	$option['google_width'] = '80';
 	$option['google_count'] = true;
 	$option['twitter_count'] = true;
 	$option['linkedin_count'] = true;
+	$option['pinterest_count'] = true;
 	return $option;
 }
 ?>
