@@ -1,10 +1,11 @@
 === Add Twitter, Facebook Like, Google plus one Social share ===
 Contributors: beingmaverick
 Plugin Site: http://www.searchtechword.com
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=86FHBFVUYN45J
 Tags: Facebook like, twitter button, twitter share,LinkedIn, Google +1 button, Google plus one, Stumbleupon, social share, twitter facebook share,stumbleupon, LinkedIn share, floating sharebar, facebook, +1, pinterest button, pinterest share 
 Requires at least: 2.8
 Tested up to: 3.3.1
-Stable tag: 2.3.0
+Stable tag: 2.4.0
 
 == Description ==
 <br />
@@ -64,6 +65,12 @@ You can Check Screen Shots on my website. I use the same plugin to display Socia
 
 == Changelog ==
 
+= 2.4.0 =
+* Bug fix for Facebook Like on IE
+* Support https sites
+* Final fix for "Tweet" and "Pin It" test in excerpt
+* Couple of other small fixes.
+
 = 2.3.0 =
 * Added Pinterest share option.
 * Fix for the "Tweet" text in the excerpt.
@@ -105,6 +112,10 @@ You can Check Screen Shots on my website. I use the same plugin to display Socia
 * Initial version
 
 == Upgrade Notice ==
+
+= 2.4.0 =
+
+Bug fix for Facebook like on IE | Support for https sites | Couple of other bug fixes
 
 = 2.3.0 =
 
