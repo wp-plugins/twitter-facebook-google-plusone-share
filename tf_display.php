@@ -19,17 +19,17 @@ function twitter_facebook_share_init() {
 	} 
 
 	if ($option['active_buttons']['twitter']==true) {
-		wp_enqueue_script('twitter_facebook_share_twitter', 'http://platform.twitter.com/widgets.js','','',$option['jsload']);
+		wp_enqueue_script('twitter_facebook_share_twitter', 'http'.(is_ssl()?'s':'').'://platform.twitter.com/widgets.js','','',$option['jsload']);
 	}
 	
 	if ($option['active_buttons']['Google_plusone']==true) {
-		wp_enqueue_script('twitter_facebook_share_google', 'http://apis.google.com/js/plusone.js','','',$option['jsload']);
+		wp_enqueue_script('twitter_facebook_share_google', 'http'.(is_ssl()?'s':'').'://apis.google.com/js/plusone.js','','',$option['jsload']);
 	}
 	if ($option['active_buttons']['linkedin']==true) {
-		wp_enqueue_script('twitter_facebook_share_linkedin', 'http://platform.linkedin.com/in.js','','',$option['jsload']);
+		wp_enqueue_script('twitter_facebook_share_linkedin', 'http'.(is_ssl()?'s':'').'://platform.linkedin.com/in.js','','',$option['jsload']);
 	}
 	if ($option['active_buttons']['pinterest']==true) {
-		wp_enqueue_script('twitter_facebook_share_pinterest', 'http://assets.pinterest.com/js/pinit.js','','',$option['jsload']);
+		wp_enqueue_script('twitter_facebook_share_pinterest', 'http'.(is_ssl()?'s':'').'://assets.pinterest.com/js/pinit.js','','',$option['jsload']);
 	}
 
 	wp_enqueue_style('tfg_style', '/wp-content/plugins/twitter-facebook-google-plusone-share/tfg_style.css');
@@ -212,7 +212,7 @@ function kc_social_share($source)
 		if ($option['active_buttons']['facebook_like']==true) {
 		$output .= '
 			<div class="buttons">
-			<iframe src="http://www.facebook.com/plugins/like.php?href=' . urlencode($post_link) . '&amp;layout=box_count&amp;show_faces=false&amp;action=like&amp;font=verdana&amp;colorscheme=light" style="border:none; overflow:hidden; width:50px; height:65px;"></iframe>
+			<iframe src="http'.(is_ssl()?'s':'').'://www.facebook.com/plugins/like.php?href=' . urlencode($post_link) . '&amp;layout=box_count&amp;show_faces=false&amp;action=like&amp;font=verdana&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:50px; height:65px;"></iframe>
 			</div>';
 		}
 		
@@ -220,12 +220,12 @@ function kc_social_share($source)
 		if ($option['twitter_id'] != ''){
 		$output .= '
 			<div class="buttons">
-			<a href="http://twitter.com/share" class="twitter-share-button" data-url="'. $post_link .'"  data-text="'. $post_title . '" data-count="vertical" data-via="'. $option['twitter_id'] . '">Tweet</a>
+			<a href="http'.(is_ssl()?'s':'').'://twitter.com/share" class="twitter-share-button" data-url="'. $post_link .'"  data-text="'. $post_title . '" data-count="vertical" data-via="'. $option['twitter_id'] . '"></a>
 			</div>';
 		} else {
 		$output .= '
 			<div class="buttons">
-			<a href="http://twitter.com/share" class="twitter-share-button" data-url="'. $post_link .'"  data-text="'. $post_title . '" data-count="vertical">Tweet</a>
+			<a href="http'.(is_ssl()?'s':'').'://twitter.com/share" class="twitter-share-button" data-url="'. $post_link .'"  data-text="'. $post_title . '" data-count="vertical"></a>
 			</div>';
 		}
 		}
@@ -241,12 +241,12 @@ function kc_social_share($source)
 		}
 		if ($option['active_buttons']['stumbleupon']==true) {
 		$output .= '
-			<div class="buttons"><script src="http://www.stumbleupon.com/hostedbadge.php?s=5&amp;r='.$post_link.'"></script></div>';
+			<div class="buttons"><script src="http'.(is_ssl()?'s':'').'://www.stumbleupon.com/hostedbadge.php?s=5&amp;r='.$post_link.'"></script></div>';
 		}
 		if ($option['active_buttons']['pinterest']==true) {
-		$post_image = kc_get_image(array('post_id' => $post->ID));
-		$output .= '<div class="buttons" style="padding-left:0px;">
-		<a href="http://pinterest.com/pin/create/button/?url=' .  urlencode($post_link) . '&media=' . urlencode($post_image) . '" class="pin-it-button" count-layout="vertical">Pin It</a></div>';
+		$post_image = tf_get_image(array('post_id' => $post->ID));
+		$output .= '<div class="buttons" style="padding-left:5px;">
+		<a href="http'.(is_ssl()?'s':'').'://pinterest.com/pin/create/button/?url=' .  $post_link . '&media=' . $post_image . '" class="pin-it-button" count-layout="vertical"></a></div>';
 		}
 		$output .= '</div><div style="clear:both"></div>';
 		return $output;
@@ -259,7 +259,7 @@ function kc_social_share($source)
 		if ($option['active_buttons']['facebook_like']==true) {
 		$output .= '
 			<div style="float:left; width:' .$option['facebook_like_width']. 'px;padding-right:10px; margin:4px 4px 4px 4px;height:30px;">
-			<iframe src="http://www.facebook.com/plugins/like.php?href=' . urlencode($post_link) . '&amp;layout=button_count&amp;show_faces=false&amp;width='.$option['facebook_like_width'].'&amp;action=like&amp;font=verdana&amp;colorscheme=light&amp;height=21" style="border:none; overflow:hidden; width='.$option['facebook_like_width'].'px; height:21px;"></iframe></div>';
+			<iframe src="http'.(is_ssl()?'s':'').'://www.facebook.com/plugins/like.php?href=' . urlencode($post_link) . '&amp;layout=button_count&amp;show_faces=false&amp;width='.$option['facebook_like_width'].'&amp;action=like&amp;font=verdana&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:'.$option['facebook_like_width'].'px; height:21px;"></iframe></div>';
 		}
 
 		if ($option['active_buttons']['Google_plusone']==true) {
@@ -275,12 +275,12 @@ function kc_social_share($source)
 		if ($option['twitter_id'] != ''){
 		$output .= '
 			<div style="float:left; width:' .$option['twitter_width']. 'px;padding-right:10px; margin:4px 4px 4px 4px;height:30px;">
-			<a href="http://twitter.com/share" class="twitter-share-button" data-url="'. $post_link .'"  data-text="'. $post_title . '" data-count="'.$data_count.'" data-via="'. $option['twitter_id'] . '">Tweet</a>
+			<a href="http'.(is_ssl()?'s':'').'://twitter.com/share" class="twitter-share-button" data-url="'. $post_link .'"  data-text="'. $post_title . '" data-count="'.$data_count.'" data-via="'. $option['twitter_id'] . '"></a>
 			</div>';
 		} else {
 		$output .= '
 			<div style="float:left; width:' .$option['twitter_width']. 'px;padding-right:10px; margin:4px 4px 4px 4px;height:30px;">
-			<a href="http://twitter.com/share" class="twitter-share-button" data-url="'. $post_link .'"  data-text="'. $post_title . '" data-count="'.$data_count.'">Tweet</a>
+			<a href="http'.(is_ssl()?'s':'').'://twitter.com/share" class="twitter-share-button" data-url="'. $post_link .'"  data-text="'. $post_title . '" data-count="'.$data_count.'"></a>
 			</div>';
 		}
 		}
@@ -289,13 +289,13 @@ function kc_social_share($source)
 		$output .= '<div style="float:left; width:' .$option['linkedin_width']. 'px;padding-right:10px; margin:4px 4px 4px 4px;height:30px;"><script type="in/share" data-url="' . $post_link . '" data-counter="' .$counter. '"></script></div>';
 		}
 		if ($option['active_buttons']['pinterest']==true) {
-		$post_image = kc_get_image();
+		$post_image = tf_get_image();
 		$counter = ($option['pinterest_count']) ? 'horizontal' : 'none';
-		$output .= '<div style="float:left; width:' .$option['pinterest_width']. 'px;padding-right:10px; margin:4px 4px 4px 4px;height:30px;"><a href="http://pinterest.com/pin/create/button/?url=' .urlencode($post_link) . '&media=' . urlencode($post_image) . '" class="pin-it-button" count-layout="' .$counter.'">Pin It</a></div>';
+		$output .= '<div style="float:left; width:' .$option['pinterest_width']. 'px;padding-right:10px; margin:4px 4px 4px 4px;height:30px;"><a href="http'.(is_ssl()?'s':'').'://pinterest.com/pin/create/button/?url=' . $post_link . '&media=' . $post_image . '" class="pin-it-button" count-layout="' .$counter.'"></a></div>';
 		}
 		if ($option['active_buttons']['stumbleupon']==true) {
 		$output .= '			
-			<div style="float:left; width:' .$option['stumbleupon_width']. 'px;padding-right:10px; margin:4px 4px 4px 4px;height:30px;"><script src="http://www.stumbleupon.com/hostedbadge.php?s=1&amp;r='.$post_link.'"></script></div>';
+			<div style="float:left; width:' .$option['stumbleupon_width']. 'px;padding-right:10px; margin:4px 4px 4px 4px;height:30px;"><script src="http'.(is_ssl()?'s':'').'://www.stumbleupon.com/hostedbadge.php?s=1&amp;r='.$post_link.'"></script></div>';
 		}
 		
 		$output .= '			
@@ -316,9 +316,10 @@ function tfg_social_share_shortcode () {
 	echo $output;
 }
 
-function fb_like_thumbnails()
+function kc_fb_like_thumbnails()
 {
-global $posts;
+//global $posts;
+/*
 $default = '';
 $content = $posts[0]->post_content; // $posts is an array, fetch the first element
 $output = preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $matches);
@@ -328,11 +329,19 @@ echo "\n\n<!-- Thumbnail for facebook like -->\n<link rel=\"image_src\" href=\"$
 }
 else
 $thumb = $default;
+*/
+
+$thumb = tf_get_image();
+if(!empty($thumb))
+{
+ echo "\n\n<!-- Facebook Like Thumbnail -->\n<link rel=\"image_src\" href=\"$thumb\" />\n<!-- End Facebook Like Thumbnail -->\n\n";
+}
+
 }
 /*
 This script will go through different possible options to retrive the display image associated with each post.  
 */
-function kc_get_image($args = array() ) 
+function tf_get_image($args = array() ) 
 {
  global $post;
  

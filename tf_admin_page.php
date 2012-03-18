@@ -4,7 +4,7 @@ The main admin page for this plugin. The logic for different user input and form
 */
 
 function kc_twitter_facebook_admin_menu() {
-add_options_page('TF Social Share', 'TF Social Share', 'administrator',
+add_options_page('TF Social Share', 'TF Social Share', 'manage_options',
 'kc-social-share', 'kc_twitter_facebook_admin_page');
 }
 
@@ -312,7 +312,30 @@ $show_in = array(
 	<ul>
 	<li>Shortcode <strong>[tfg_social_share]</strong> to add the social share bar to specific pages.</li> 
 	<li>Custom field "<strong>disable_social_share</strong>" with value "yes" to exclude specific post or pages.</li>
+	</ul>
 	</td></tr>
+	</tr>
+	</table>
+	</div>
+	</div>
+	<div class="postbox">
+	<h3>'.__("Show Your Love", 'menu-test' ).'</h3>
+	<div class="inside">
+	<table>
+	<tr>
+	<p>If you are happy with the plugin please show your love by liking us on social network<p>
+	</tr>
+	<tr><td style="padding-right:10px;">
+	<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+	<div class="g-plusone" data-annotation="none" data-href="http://www.searchtechword.com/"></div>
+	</td>
+	<td style="width:50px;">
+	<a href="https://twitter.com/searchtechword" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @searchtechword</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	</td>
+	</tr>
+	<tr> 
+	<iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fsearchtechword&amp;width=200&amp;height=62&amp;colorscheme=light&amp;show_faces=false&amp;border_color&amp;stream=false&amp;header=true" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:200px; height:62px;" allowTransparency="true"></iframe>
 	</tr>
 	</table>
 	</div>
