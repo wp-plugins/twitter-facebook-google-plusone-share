@@ -28,10 +28,11 @@ function twitter_facebook_share_init() {
 	if ($option['active_buttons']['linkedin']==true) {
 		wp_enqueue_script('twitter_facebook_share_linkedin', 'http'.(is_ssl()?'s':'').'://platform.linkedin.com/in.js','','',$option['jsload']);
 	}
+/*
 	if ($option['active_buttons']['pinterest']==true) {
 		wp_enqueue_script('twitter_facebook_share_pinterest', 'http'.(is_ssl()?'s':'').'://assets.pinterest.com/js/pinit.js','','',$option['jsload']);
 	}
-
+*/
 	wp_enqueue_style('tfg_style', '/wp-content/plugins/twitter-facebook-google-plusone-share/tfg_style.css');
 	
 	
@@ -212,7 +213,7 @@ function kc_social_share($source)
 		if ($option['active_buttons']['facebook_like']==true) {
 		$output .= '
 			<div class="buttons">
-			<iframe src="http'.(is_ssl()?'s':'').'://www.facebook.com/plugins/like.php?href=' . urlencode($post_link) . '&amp;layout=box_count&amp;show_faces=false&amp;action=like&amp;font=verdana&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:50px; height:65px;"></iframe>
+			<iframe src="http'.(is_ssl()?'s':'').'://www.facebook.com/plugins/like.php?href=' . urlencode($post_link) . '&amp;layout=box_count&amp;show_faces=false&amp;action=like&amp;font=verdana&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:60px; height:65px;"></iframe>
 			</div>';
 		}
 		
@@ -237,7 +238,7 @@ function kc_social_share($source)
 			</div>';
 		}
 		if ($option['active_buttons']['linkedin']==true) {
-		$output .= '<div class="buttons" style="padding-left:0px;"><script type="in/share" data-url="' . $post_link . '" data-counter="top"></script></div>';
+		$output .= '<div class="buttons" style="padding-left: 0px;"><script type="in/share" data-url="' . $post_link . '" data-counter="top"></script></div>';
 		}
 		if ($option['active_buttons']['stumbleupon']==true) {
 		$output .= '
@@ -245,8 +246,9 @@ function kc_social_share($source)
 		}
 		if ($option['active_buttons']['pinterest']==true) {
 		$post_image = tf_get_image(array('post_id' => $post->ID));
-		$output .= '<div class="buttons" style="padding-left:5px;">
-		<a href="http'.(is_ssl()?'s':'').'://pinterest.com/pin/create/button/?url=' .  $post_link . '&media=' . $post_image . '" class="pin-it-button" count-layout="vertical"></a></div>';
+		$output .= '<div class="buttons" style="padding-top: 5px; padding-left: 5px; padding-top: 35px;">
+		<a href="http'.(is_ssl()?'s':'').'://pinterest.com/pin/create/button/?url=' .  urlencode($post_link) . '&media= ' . urlencode($post_image) . '" data-pin-do="buttonPin" data-pin-config="above" data-pin-height="28"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_28.png" /></a>
+<script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script></div>';
 		}
 		$output .= '</div><div style="clear:both"></div>';
 		return $output;
