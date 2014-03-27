@@ -292,8 +292,9 @@ function kc_social_share($source)
 		}
 		if ($option['active_buttons']['pinterest']==true) {
 		$post_image = tf_get_image();
-		$counter = ($option['pinterest_count']) ? 'horizontal' : 'none';
-		$output .= '<div style="float:left; width:' .$option['pinterest_width']. 'px;padding-right:10px; margin:4px 4px 4px 4px;height:30px;"><a href="http'.(is_ssl()?'s':'').'://pinterest.com/pin/create/button/?url=' . $post_link . '&media=' . $post_image . '" class="pin-it-button" count-layout="' .$counter.'"></a></div>';
+		$counter = ($option['pinterest_count']) ? 'beside' : 'none';
+		$output .= '<div style="float:left; width:' .$option['pinterest_width']. 'px;padding-right:10px; margin:4px 4px 4px 4px;height:30px;"><a href="http'.(is_ssl()?'s':'').'://pinterest.com/pin/create/button/?url=' . urlencode($post_link) . '&media=' . urlencode($post_image) . '" data-pin-do="buttonPin" data-pin-config="' .$counter . '"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a>
+<script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script></div>';
 		}
 		if ($option['active_buttons']['stumbleupon']==true) {
 		$output .= '			
