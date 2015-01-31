@@ -2,10 +2,10 @@
 Contributors: beingmaverick
 Plugin Site: http://www.searchtechword.com
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=86FHBFVUYN45J
-Tags: TF Social Share,Facebook like, twitter button, twitter share,LinkedIn, Google +1 button, Google plus one, Stumbleupon, social share, twitter facebook share,stumbleupon, LinkedIn share, floating sharebar, facebook, +1, pinterest button, pinterest share 
+Tags: TF Social Share, Floating Social Share bar, Facebook like, twitter button, twitter share,LinkedIn, Google +1 button, Google plus one, Stumbleupon, social share, twitter facebook share,stumbleupon, LinkedIn share, floating sharebar, facebook, +1, pinterest button, pinterest share 
 Requires at least: 2.8
-Tested up to: 3.8.1
-Stable tag: 2.4.2
+Tested up to: 4.1
+Stable tag: 2.4.3
 
 == Description ==
 <br />
@@ -64,6 +64,10 @@ You can Check Screen Shots on my website. I use the same plugin to display Socia
 [Twitter Facebook Google Plusone Social Share](http://www.searchtechword.com/2011/06/wordpress-plugin-add-twitter-facebook-google-plus-one-share)<br />
 
 == Changelog ==
+
+= 2.4.3 =
+
+* Testing done for compatibility with 4.1 version of Wordpress
 
 = 2.4.1 = 
 
